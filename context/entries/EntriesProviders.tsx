@@ -58,6 +58,17 @@ export const EntriesProvider: FC<Props> = ({ children }) => {
     refreshEntries();
   }, []);
 
+  const deleteEntry = async(_id: string) => {
+    try {
+      const {data} =  await entriesApi.delete<Entry>(`/entries/${_id}`);
+      console.log("[Entries] Delete-Entry", data);
+      dispatch({ type: "[Entries] Delete-Entry", payload: data });
+      await refreshEntries();
+    } catch (error) {
+      console.log({error});
+    }
+  }
+
   return (
     <EntriesContext.Provider
       value={{
@@ -66,6 +77,7 @@ export const EntriesProvider: FC<Props> = ({ children }) => {
         //Metodos
         addNewEntry,
         updateEntry,
+        deleteEntry,
       }}
     >
       {children}

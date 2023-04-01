@@ -3,12 +3,12 @@ import { GetServerSideProps } from 'next';
 import { Card, Grid, CardHeader, CardContent, TextField, CardActions, Button, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, capitalize, IconButton } from '@mui/material';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { dnEntries } from '@/database';
 import { Layout } from '../../components/layouts/Layout';
 import { Entry, EntryStatus } from '@/interfaces';
 import { EntriesContext } from '@/context/entries';
 import { dateFunctions } from '@/utils';
+import router from 'next/router';
 
 const validStatus: EntryStatus[] = ['pending', 'in-progress', 'finished'];
 
@@ -18,7 +18,8 @@ interface Props {
 
 const EntryPage:FC<Props> = ( { entry } ) => {
 
-    const { updateEntry } = useContext( EntriesContext)
+    const { updateEntry } = useContext( EntriesContext )
+    const { deleteEntry } = useContext( EntriesContext )
 
     const [inputValue, setInputValue] = useState( entry.description );
     const [status, setStatus] = useState<EntryStatus>( entry.status );
@@ -43,7 +44,13 @@ const EntryPage:FC<Props> = ( { entry } ) => {
         }
 
         updateEntry( updatedEntry, true );
+        router.push("/");
     }
+
+    const onDelete = () => {
+        deleteEntry(entry._id);
+        router.push("/");
+      } 
 
   return (
     <Layout title={ inputValue.substring(0,20) + '...' }>
@@ -125,7 +132,7 @@ const EntryPage:FC<Props> = ( { entry } ) => {
             backgroundColor: 'red'
 
         }}
-        
+        onClick={onDelete}
         >
             <DeleteForeverOutlinedIcon/>
         </IconButton>
@@ -159,4 +166,5 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 }
 
 export default EntryPage;
+
 
