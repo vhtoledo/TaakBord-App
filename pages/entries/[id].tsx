@@ -3,6 +3,7 @@ import { GetServerSideProps } from 'next';
 import { Card, Grid, CardHeader, CardContent, TextField, CardActions, Button, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, capitalize, IconButton } from '@mui/material';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { dnEntries } from '@/database';
 import { Layout } from '../../components/layouts/Layout';
 import { Entry, EntryStatus } from '@/interfaces';
@@ -50,9 +51,10 @@ const EntryPage:FC<Props> = ( { entry } ) => {
             container
             justifyContent='center'
             sx={{ marginTop: 2 }}
+            
         >
             <Grid item xs={ 12 } sm={ 8 } md={ 6 }>
-                <Card>
+                <Card className='card-cont'>
                     <CardHeader
                         title={`Entrada: ${ inputValue }`}
                         subheader={`Creada ${dateFunctions.getFormatDistanceToNow( entry.createdAt ) }`}
@@ -100,6 +102,8 @@ const EntryPage:FC<Props> = ( { entry } ) => {
                     <CardActions>
                         <Button
                             startIcon={ <SaveOutlinedIcon/> }
+                            className='card-in'
+                            style={{color:'#fff'}}
                             variant="contained"
                             fullWidth
                             onClick={ onSave }

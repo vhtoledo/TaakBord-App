@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppBar, IconButton, Link, Toolbar, Typography } from "@mui/material";
+import { AppBar, Avatar, IconButton, Link, Stack, Toolbar, Typography } from "@mui/material";
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import { UIContext } from '../../context/ui/UIContext';
 import NextLink from 'next/link';

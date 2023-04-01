@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import {
+  Avatar,
   Box,
   Divider,
   Drawer,
@@ -7,33 +8,37 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Stack,
   Typography,
 } from "@mui/material";
-import InboxOutlinedIcon from "@mui/icons-material/InboxOutlined";
-import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
-import { UIContext } from '../../context/ui';
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import SettingsApplicationsOutlinedIcon from '@mui/icons-material/SettingsApplicationsOutlined';
+import { UIContext } from "../../context/ui";
 
-const menuItems: string[] = ["Inbox", "Starred", "Send Email", "Drafts"];
+const menuItems: string[] = ["Usuario", "Agregar Panel", "Configuracion", "Salir"];
 
 export const Sidebar = () => {
-
-  const { sidemenuOpen, closeSideMenu } = useContext(UIContext)
+  const { sidemenuOpen, closeSideMenu } = useContext(UIContext);
 
   return (
     <Drawer anchor="left" open={sidemenuOpen} onClose={closeSideMenu}>
       <Box sx={{ width: 250 }}>
         <Box sx={{ padding: "5px 10px" }}>
-          <Typography variant="h5">Menú TaakBord</Typography>
+          <Typography variant="h5" style={{textAlign: 'center'}}>Menú TaakBord</Typography>
         </Box>
 
+        <Stack direction="row" spacing={5}>
+          <Avatar alt="Remy Sharp" src=""  sx={{ width: 54, height: 54, margin: 'auto' }} />
+        </Stack>
+
         <List>
           {menuItems.map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 ? (
-                  <InboxOutlinedIcon />
+                  <AccountCircleOutlinedIcon />
                 ) : (
-                  <MailOutlineOutlinedIcon />
+                  <SettingsApplicationsOutlinedIcon />
                 )}
               </ListItemIcon>
               <ListItemText primary={text} />
@@ -41,22 +46,7 @@ export const Sidebar = () => {
           ))}
         </List>
 
-        <Divider/>
-
-        <List>
-          {menuItems.map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 ? (
-                  <InboxOutlinedIcon />
-                ) : (
-                  <MailOutlineOutlinedIcon />
-                )}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        <Divider />
       </Box>
     </Drawer>
   );

@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { blue, grey, red } from '@mui/material/colors'
+import { blue, red } from '@mui/material/colors'
 
 export const darkTheme = createTheme({
     palette: {
@@ -25,7 +25,7 @@ export const darkTheme = createTheme({
           },
           styleOverrides: {
             root: {
-              backgroundColor: '#0080C1'
+              backgroundColor: '#000'
             }
           }
         }

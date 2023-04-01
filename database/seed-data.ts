@@ -11,17 +11,17 @@ interface SeedEntry {
 export const seedData: SeedData = {
     entries: [
         {
-            description:'Pendiente: asdhfkjashdfkjhasdjkhfahjd',
+            description:'Pendiente: Tarea pendiente',
             createdAt: Date.now(),
             status: 'pending',
         },
         {
-            description:'En-Progreso: asdhfkjashdfkjhasdjkhfahjd',
+            description:'En-Progreso: Tarea en Progreso',
             createdAt: Date.now()  - 100000,
             status: 'in-progress',
         },
         {
-            description:'Terminadas: asdhfkjashdfkjhasdjkhfahjd',
+            description:'Terminadas: Tarea Terminada',
             createdAt: Date.now()  - 100000,
             status: 'finished',
         },
