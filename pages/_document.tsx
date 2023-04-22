@@ -9,7 +9,7 @@ const Document = () => {
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
 
-        <link rel="shortcut icon" href="/favicon.ico"/>
+        <link rel="shortcut icon" href="/LogoT.png"/>
       </Head>
       <body>
         <Main />

@@ -4,8 +4,6 @@ import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import { UIContext } from '../../context/ui/UIContext';
 import NextLink from 'next/link';
 
-
-
 export const Navbar = () => {
 
   const { openSideMenu } = useContext( UIContext )
